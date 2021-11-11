@@ -2,7 +2,6 @@
   "name": "alchemy-backend",
   "version": "2.0.0",
   "private": true,
-  "author": "Wes Bos",
   "license": "MIT",
   "scripts": {
     "dev": "keystone-next",
@@ -71,5 +70,4 @@
   "engines": {
     "node": ">=14.0.0"
   },
-  "repository": "https://github.com/wesbos/advanced-react"
 }
