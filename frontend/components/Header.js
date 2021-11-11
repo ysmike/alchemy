@@ -37,7 +37,7 @@ export default function Header() {
     <HeaderStyles>
       <div className="bar">
         <Logo>
-          <Link href="/">Alchemy Boutique</Link>
+          <Link href="/">Alchemy</Link>
         </Logo>
       </div>
       <div className="sub-bar">
