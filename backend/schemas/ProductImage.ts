@@ -20,6 +20,7 @@ export const ProductImage = list({
   },
   ui: {
     listView: {
+      // default columns in Keystone
       initialColumns: ['image', 'altText', 'product'],
     },
   },
