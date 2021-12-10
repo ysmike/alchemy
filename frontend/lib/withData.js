@@ -6,15 +6,19 @@ import withApollo from 'next-with-apollo';
 import { endpoint, prodEndpoint } from '../config';
 
 function createClient({ headers, initialState }) {
+  // create Apollo client
   return new ApolloClient({
     link: ApolloLink.from([
+      // handle errors
       onError(({ graphQLErrors, networkError }) => {
+        // error due to wrong password, requesting a field that does not exist, etc.
         if (graphQLErrors)
           graphQLErrors.forEach(({ message, locations, path }) =>
             console.log(
               `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
             )
           );
+        // network error, e.g. server isn't running
         if (networkError)
           console.log(
             `[Network error]: ${networkError}. Backend is unreachable. Is it running?`
@@ -30,6 +34,7 @@ function createClient({ headers, initialState }) {
         headers,
       }),
     ]),
+    // use in-memory cache for caching data
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
