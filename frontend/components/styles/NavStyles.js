@@ -18,10 +18,12 @@ const NavStyles = styled.ul`
     background: none;
     border: 0;
     cursor: pointer;
+    /* reduce font size and padding when width <= 700px */
     @media (max-width: 700px) {
       font-size: 10px;
       padding: 0 10px;
     }
+    /* add grey dividers that resemble forward slashes */
     &:before {
       content: '';
       width: 2px;
@@ -48,7 +50,7 @@ const NavStyles = styled.ul`
     &:hover,
     &:focus {
       outline: none;
-      text-decoration:none;
+      text-decoration: none;
       &:after {
         width: calc(100% - 60px);
       }
