@@ -4,9 +4,10 @@ export default function useForm(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   function handleChange(e) {
-    // copy existing state and overwrite
+    // copy existing state and overwrite the value of the specified key
     let { value, name, type } = e.target;
     if (type === 'number') {
+      // HTML automatically converts number to text so we coerce back to number
       value = parseInt(value);
     }
     if (type === 'file') {
