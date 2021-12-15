@@ -11,7 +11,8 @@ export default function useForm(initial = {}) {
       value = parseInt(value);
     }
     if (type === 'file') {
-      value[0] = e.target.files;
+      // take the first element of the `e.target.files` array and store in value
+      [value] = e.target.files;
     }
     setInputs({ ...inputs, [name]: value });
   }
