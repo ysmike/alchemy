@@ -2,6 +2,8 @@ import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
+import DisplayError from './ErrorMessage';
+import { ALL_PRODUCTS_QUERY } from './Products';
 
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
@@ -12,7 +14,7 @@ const CREATE_PRODUCT_MUTATION = gql`
     $price: Int!
     $image: Upload
   ) {
-    CreateProduct(
+    createProduct(
       data: {
         name: $name
         description: $description
@@ -32,22 +34,32 @@ const CREATE_PRODUCT_MUTATION = gql`
 export default function CreateProduct() {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
     image: '',
-    name: 'default name',
-    price: 500,
-    description: 'default description',
+    name: '',
+    price: 0,
+    description: '',
   });
-  const payload = useMutation(CREATE_PRODUCT_MUTATION, {
-    variables: inputs,
-  });
+
+  const [createProduct, { loading, error, data }] = useMutation(
+    CREATE_PRODUCT_MUTATION,
+    {
+      variables: inputs,
+      // refetch `ALL_PRODUCTS_QUERY` after creating a product
+      refetchQueries: [{ query: ALL_PRODUCTS_QUERY }],
+    }
+  );
+
   return (
     <Form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        console.log(inputs);
+        // submit the input fields to the backend
+        await createProduct();
+        clearForm();
       }}
     >
       {/* `fieldset` allows controlling an entire set of inputs */}
-      <fieldset>
+      <DisplayError error={error} />
+      <fieldset disabled={loading} aria-busy={loading}>
         <label htmlFor="file">
           Image
           <input
