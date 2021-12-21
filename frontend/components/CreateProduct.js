@@ -1,29 +1,24 @@
 import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
-import CreateProduct from './CreateProduct';
-import { useMutation } from '@apollo/client';
 
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
-    # which variablesl are getting passed in? And what types are they?
+    # which variables are getting passed in? And what types are they?
+    # exclamation mark at the end indicates that it's a required field
     $name: String!
     $description: String!
     $price: Int!
     $image: Upload
-  ){
+  ) {
     CreateProduct(
       data: {
-        name: $name,
-        description: $description,
-        price: $price,
-        status: "AVAILABLE",
-        photo: {
-          create: {
-            image: $image,
-            altText: $name
-          }
-        }
+        name: $name
+        description: $description
+        price: $price
+        status: "AVAILABLE"
+        photo: { create: { image: $image, altText: $name } }
       }
     ) {
       id
@@ -32,7 +27,7 @@ const CREATE_PRODUCT_MUTATION = gql`
       name
     }
   }
-`
+`;
 
 export default function CreateProduct() {
   const { inputs, handleChange, clearForm, resetForm } = useForm({
@@ -42,8 +37,8 @@ export default function CreateProduct() {
     description: 'default description',
   });
   const payload = useMutation(CREATE_PRODUCT_MUTATION, {
-    variables: inputs
-  })
+    variables: inputs,
+  });
   return (
     <Form
       onSubmit={(e) => {
@@ -56,6 +51,7 @@ export default function CreateProduct() {
         <label htmlFor="file">
           Image
           <input
+            // disables the submit button due to the `required` field
             required
             type="file"
             id="image"
