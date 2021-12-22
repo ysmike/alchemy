@@ -125,7 +125,7 @@ export const products = [
   },
   {
     name: 'Fanorak',
-    description: 'Super hip. Comes in a number of colours',
+    description: 'Super hip. Comes in a number of colors',
     status: 'AVAILABLE',
     price: 252342,
     photo: {
