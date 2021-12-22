@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
+import Router from 'next/router';
 import useForm from '../lib/useForm';
 import Form from './styles/Form';
 import DisplayError from './ErrorMessage';
@@ -53,8 +54,12 @@ export default function CreateProduct() {
       onSubmit={async (e) => {
         e.preventDefault();
         // submit the input fields to the backend
-        await createProduct();
+        const res = await createProduct();
         clearForm();
+        // go to the page of the product just created
+        Router.push({
+          pathname: `/product/${res.data.createProduct.id}`,
+        });
       }}
     >
       {/* `fieldset` allows controlling an entire set of inputs */}
