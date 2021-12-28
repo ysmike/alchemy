@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function useForm(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
+  const initialValues = Object.values(initial).join('');
+
+  useEffect(() => {
+    // this function runs when the things we're watching change
+    setInputs(initial);
+  }, [initialValues]);
+
   function handleChange(e) {
     // copy existing state and overwrite the value of the specified key
     let { value, name, type } = e.target;
