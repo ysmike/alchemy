@@ -15,6 +15,9 @@ const Logo = styled.h1`
     text-transform: uppercase;
     padding: 0.5rem 1rem;
   }
+  @media (max-width: 950px) {
+    font-size: 2rem;
+  }
 `;
 
 const HeaderStyles = styled.header`
