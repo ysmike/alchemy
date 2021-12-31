@@ -19,18 +19,15 @@ export default function RequestReset() {
   const { inputs, handleChange, resetForm } = useForm({
     email: '',
   });
-  const [signup, { data, loading, error }] = useMutation(
+  const [requestReset, { data, loading, error }] = useMutation(
     REQUEST_RESET_MUTATION,
     {
       variables: inputs,
-      // refetch teh currently logged in user
-      // refetchQueries: [{ query: CURRENT_USER_QUERY }],
     }
   );
   async function handleSubmit(e) {
     e.preventDefault();
-    const res = await signup().catch(console.error);
-    console.log(res);
+    const res = await requestReset().catch(console.error);
     resetForm();
   }
   return (

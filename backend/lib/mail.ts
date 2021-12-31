@@ -26,6 +26,8 @@ function makeANiceEmail(text: string): string {
   `;
 }
 
+// Ethereal is a completely free anti-transactional email service where messages
+// NEVER get delivered.
 export async function sendPasswordResetEmail(
   resetToken: string,
   to: string
@@ -33,8 +35,7 @@ export async function sendPasswordResetEmail(
   // email the user a token
   const info = await transport.sendMail({
     to,
-    // from: 'test@example.com',
-    from: 'davon.kling78@ethereal.email',
+    from: 'test@example.com',
     subject: 'Your password reset token!',
     html: makeANiceEmail(`Your password reset token is here.
     <a href="${process.env.FRONTEND_URL}/reset?token=${resetToken}">
