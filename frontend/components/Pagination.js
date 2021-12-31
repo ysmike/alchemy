@@ -23,7 +23,9 @@ export default function Pagination({ page }) {
   return (
     <PagniationStyles>
       <Head>
-        <title>Alchemy - Page {page} of ___</title>
+        <title>
+          Alchemy - Page {page} of {pageCount}
+        </title>
       </Head>
       <Link href={`/products/${page - 1}`}>
         <a aria-disabled={page <= 1}>← Prev</a>
