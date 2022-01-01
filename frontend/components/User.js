@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
+import PriceTag from './styles/PriceTag';
 
 export const CURRENT_USER_QUERY = gql`
   query {
@@ -8,8 +9,21 @@ export const CURRENT_USER_QUERY = gql`
         id
         email
         name
+        cart {
+          id
+          quantity
+          product {
+            id
+            name
+            price
+            photo {
+              image {
+                publicUrlTransformed
+              }
+            }
+          }
+        }
       }
-      # TODO: query the cart once we have it
     }
   }
 `;
