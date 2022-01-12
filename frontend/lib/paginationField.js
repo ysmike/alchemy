@@ -34,17 +34,14 @@ export default function paginationField() {
       // the other thing to do is to return false from here, (network request)
     },
     merge(existing, incoming, { args }) {
-      const { skip, first } = args;
+      const { skip } = args;
       // this runs when the apollo client comes back from the network
       // with our products
-      console.log(`merging items from the network ${incoming.length}`);
-      console.log(incoming);
       const merged = existing ? existing.slice(0) : [];
       // eslint-disable-next-line no-plusplus
       for (let i = skip; i < skip + incoming.length; i++) {
         merged[i] = incoming[i - skip];
       }
-      console.log(merged);
       // finally we return the merged items from the cache
       return merged;
     },
