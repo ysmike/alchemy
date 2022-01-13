@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from 'react';
-import Cart from '../components/Cart';
 
 const LocalStateContext = createContext();
 const LocalStateProvider = LocalStateContext.Provider;
