@@ -1,5 +1,7 @@
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
+import { useRouter } from 'next/dist/client/router';
+import { useState } from 'react';
 import Form from './styles/Form';
 import useForm from '../lib/useForm';
 import { CURRENT_USER_QUERY } from './User';
@@ -22,7 +24,6 @@ const SIGN_IN_MUTATION = gql`
     }
   }
 `;
-// UserAuthenticationWithPasswordFailure
 
 export default function SignIn() {
   const { inputs, handleChange, resetForm } = useForm({
@@ -34,17 +35,26 @@ export default function SignIn() {
     // refetch teh currently logged in user
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
   });
+  const router = useRouter();
+  const isLoggedIn = (responseData) =>
+    responseData?.authenticateUserWithPassword?.__typename ===
+    'UserAuthenticationWithPasswordFailure';
+  const error = isLoggedIn(data)
+    ? data?.authenticateUserWithPassword
+    : undefined;
+
   async function handleSubmit(e) {
     e.preventDefault();
     const res = await signin();
-    console.log(res);
+    const authFailed = isLoggedIn(res?.data);
     resetForm();
+    if (!authFailed) {
+      router.push({
+        pathname: '/',
+      });
+    }
   }
-  const error =
-    data?.authenticateUserWithPassword.__typename ===
-    'UserAuthenticationWithPasswordFailure'
-      ? data?.authenticateUserWithPassword
-      : undefined;
+
   return (
     <Form method="POST" onSubmit={handleSubmit}>
       <h2>Sign Into Your Account</h2>
