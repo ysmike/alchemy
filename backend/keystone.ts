@@ -12,6 +12,9 @@ import { insertSeedData } from './seed-data';
 import { sendPasswordResetEmail } from './lib/mail';
 import { CartItem } from './schemas/CartItem';
 import { extendGraphqlSchema } from './mutations/index';
+import { OrderItem } from './schemas/OrderItem';
+import { Order } from './schemas/Order';
+import { Role } from './schemas/Role';
 
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost/keystone-alchemy';
@@ -59,6 +62,9 @@ export default withAuth(
       Product,
       ProductImage,
       CartItem,
+      OrderItem,
+      Order,
+      Role,
     }),
     extendGraphqlSchema,
     ui: {
