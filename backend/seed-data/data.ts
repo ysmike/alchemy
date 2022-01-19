@@ -8,7 +8,7 @@ function timestamp() {
 export const products = [
   {
     name: 'Yeti Hondo',
-    description: 'soo nice',
+    description: 'Soo nice...',
     status: 'AVAILABLE',
     price: 3423,
     photo: {
@@ -46,7 +46,7 @@ export const products = [
     // createdAt_offset: '+00:00',
   },
   {
-    name: 'Airmax 270',
+    name: 'Nike Airmax 270',
     description: 'Great shoes!',
     status: 'AVAILABLE',
     price: 5234,
@@ -86,7 +86,7 @@ export const products = [
   },
   {
     name: 'KITH Hoodie',
-    description: 'Love this hoodie',
+    description: "Lovin' it.",
     status: 'AVAILABLE',
     price: 23562,
     photo: {
@@ -319,8 +319,8 @@ export const products = [
     // createdAt_offset: '+00:00',
   },
   {
-    name: 'Black Hole ',
-    description: 'Outdoorsy ',
+    name: 'Black Hole',
+    description: 'Outdoorsy',
     status: 'AVAILABLE',
     price: 4534,
     photo: {
@@ -437,7 +437,7 @@ export const products = [
   },
   {
     name: 'Ultraboost',
-    description: 'blacked out',
+    description: 'Blacked out',
     status: 'AVAILABLE',
     price: 6344,
     photo: {
