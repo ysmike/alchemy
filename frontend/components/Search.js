@@ -4,6 +4,7 @@ import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
 import { useRouter } from 'next/dist/client/router';
+import { useCallback } from 'react';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
@@ -37,7 +38,11 @@ export default function Search() {
     }
   );
   const items = data?.searchTerms || [];
-  const findItemsDebounced = debounce(findItems, 350);
+
+  // without `useCallback`, the debounced `findItem` function is created at
+  // every render and is triggered at every keystroke. `useCallback` allows us
+  // to keep one reference to the debounced  function unless dependencies change
+  const findItemsDebounced = useCallback(debounce(findItems, 350), [findItems]);
   resetIdCounter();
   const {
     isOpen,
@@ -63,6 +68,7 @@ export default function Search() {
     },
     itemToString: (item) => item?.name || '',
   });
+
   return (
     <SearchStyles>
       <div {...getComboboxProps()}>
