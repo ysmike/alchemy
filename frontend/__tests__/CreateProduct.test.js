@@ -6,7 +6,7 @@ import wait from 'waait';
 import CreateProduct, {
   CREATE_PRODUCT_MUTATION,
 } from '../components/CreateProduct';
-import { fakeItem, makePaginationMocksFor } from '../lib/testUtils';
+import { fakeItem } from '../lib/testUtils';
 import { ALL_PRODUCTS_QUERY } from '../components/Products';
 
 const item = fakeItem();
@@ -44,7 +44,7 @@ describe('<CreateProduct />', () => {
     );
     // check that those boxes are populated
     expect(screen.getByDisplayValue(item.name)).toBeInTheDocument();
-    // expect(screen.getByDisplayValue(item.price)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(item.price)).toBeInTheDocument();
     expect(screen.getByDisplayValue(item.description)).toBeInTheDocument();
     debug();
   });
