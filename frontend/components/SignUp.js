@@ -34,7 +34,6 @@ export default function SignUp() {
   async function handleSubmit(e) {
     e.preventDefault();
     const res = await signup().catch(console.error);
-    console.log(res);
     resetForm();
   }
   return (
@@ -86,3 +85,5 @@ export default function SignUp() {
     </Form>
   );
 }
+
+export { SIGN_UP_MUTATION };
