@@ -34,6 +34,7 @@ describe('<CreateProduct />', () => {
     );
     // type into the boxes
     await userEvent.type(screen.getByPlaceholderText(/name/i), item.name);
+    userEvent.clear(screen.getByPlaceholderText(/price/i));
     await userEvent.type(
       screen.getByPlaceholderText(/price/i),
       item.price.toString()
