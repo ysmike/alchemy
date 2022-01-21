@@ -8,9 +8,9 @@ even upload items for sale!
 
 ## 🎨 Features
 - Server-side rendering/routing and client-side caching and state management
-- Pagination with customizable number of items displayed per page
+- Pagination where the number of items displayed per page can be customized
 - User registration, authentication, permissions, and password reset via email
-- Search box that auto-completes and displays results in a selectable dropdown list
+- Search box that auto-completes and displays the results in a selectable dropdown list
 - Admin interface to swiftly manage backend data (comprised of `Users`, `Items`, `CartItems`, `Orders`, `OrderItems`, and `Roles`)
 - Automatic image upload to Cloudinary
 
@@ -32,7 +32,7 @@ git clone https://github.com/ysmike/alchemy
 cd alchemy/backend && npm i && cd ../frontend && npm i
 ```
 
-- Add the files that store environment variables in frontend and backend 
+- Add the files that store environment variables in the frontend and backend 
 - Run the backend server in development mode
 ```
 cd ../backend && npm run dev
