@@ -7,7 +7,7 @@ even upload items for sale!
 <a href="https://alchemy.bond/" target="_blank" >**Check it out!**</a>
 
 ## 🎨 Features
-- Server-side rendering/routing and client-side caching and state management
+- Server-side rendering and client-side caching, routing, and state management
 - Pagination where the number of items displayed per page can be customized
 - User registration, authentication, permissions, and password reset via email
 - Search box that auto-completes and displays the results in a selectable dropdown list
