@@ -16,7 +16,7 @@ even upload items for sale!
 
 ## 🔩 Built With
 
-- [Next.js](https://nextjs.org/) - React web framework for server-side rendering/routing
+- [Next.js](https://nextjs.org/) - React web framework for server-side rendering
 - [Apollo Client](https://www.apollographql.com/docs/react/) - State management library to manage data with GraphQL
 - [Keystone](https://keystonejs.com/) - Headless CMS that facilitates schema creation and provides GraphQL APIs based on schema
   
