@@ -4,7 +4,7 @@ An online marketplace where you can browse and search for items, manage cart,
 and complete checkout via Stripe. You can view the history of your orders and
 even upload items for sale!
 
-<a href="https://alchemy.bond/" target="_blank" >**Check it out!**</a>
+Due to the ever-rising costs of hosting services, I've taken down the servers for the frontend and backend as well as my beloved domain - `alchemy.bond`. Feel free to test the app locally with the instructions below!
 
 ## 🎨 Features
 - Server-side rendering and client-side caching, routing, and state management
